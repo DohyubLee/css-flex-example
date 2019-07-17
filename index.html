@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flex 정리</title>
+    <style>
+        body, p {
+            margin: 0;
+        }
+        .container {
+            height: 100vh;
+            background-color: lightgray;
+            display: flex;   /* flexbox 선언부, 직속자식 item들만 왼쪽부터 가로 방향으로 정렬이된다. */
+            flex-direction: row; /* 기본값은 row 이며 자식 item들의 정렬방향을 지정한다 */
+            flex-wrap: nowrap; 
+            /* 기본값은 nowrap 이며 화면의 가로크기가 줄어들어도 item들의 위치는 변화가 없음,
+            float를 사용한것처럼 화면이 줄어듬에 따라 item들이 아래로 떨어지게 하려면  값을 wrap으로 주면됨 */
+            justify-content: flex-start;
+            /* 기본값은 flex-start, 자식 item들의 가로 정렬을 할때 사용이 되는 속성 */
+            align-items: stretch;
+            /* 기본값은 stretch, 자식 item들의 세로 정렬을 할때 사용이 되는 속성 */
+            align-content: flex-start;
+            /* 기본값  flex-start, flex-wrap값이 wrap 일때 동작을하는 속성으로 가로로 배치된 item들이 화면이 줄어듬에따라
+            화면아래로 떨어질때 세로방향으로 배치된 item들의 정렬 방식을 지정한다. */
+        }
+        .item {
+            background-color: yellow;
+            flex-basis: 0;
+            /* 기본값 auto, 기본값일때 item의 너비를 감지한다, flex-grow는 item들의 너비를 제외한 남은 여백만을 비율맞춰 늘려주기때문에
+            값을 0으로 지정해주어 실제 item들의 너비가 지정된 비율에 맞게 보여줄수있다. */
+        }
+        .item:nth-child(1) {
+            flex-grow: 1;
+            /* 기본값은 0,  자식 item들에서 사용하는 속성으로 현재 item들의 정렬방향기준으로 각각의 사이즈 비율을 지정 할 수있다. 
+            부모의 전체 영역을 기준으로 사용가능한 공간을 비율에 맞게 늘어나게해주며 실제 box의 크기가 각각 비율에 맞게 커지는것이 아닌 
+            item들이 원래차지하고 있던 영역을 제외한 여백을 비율에 맞게 나눠갖는것이다*/
+            flex-shrink: 1;
+            /* 기본값을 1, 화면 사이즈가 줄어들때 item들이 기본적으로 차지하고있는 크기보 작아질때 item 자체의 여백을 정해진 비율에 맞게 줄어들게한다
+            가지고있는 여백이 없으면 줄어들지 않는다 */
+            flex : 1;
+            /* flex-grow 와 flex-shrink 를 동시에 적용할수있는 축약형, 추가 flex-basis를 0으로 알아아서 지정해준다*/
+
+            /* order: 1; */
+            /* item들의 순서를 지정해주는 속성 */
+            /* align-self: flex-end; */
+            /* 자기 영역 내에서 세로 정렬 */
+        
+        }
+        .item:nth-child(2) {
+            flex-grow: 2;
+            flex-shrink: 2;
+            flex : 2;
+        }
+        .item:nth-child(3) {
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex : 1;
+        }
+        .item:nth-child(odd) {
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">
+            <img src="image/youtube.png" alt="youtube">
+            <p>AAAAAAAAAAAA</p>
+            <p>AAAAAAAAAAAA</p>
+            <p>AAAAAAAAAAAA</p>
+        </div>
+        <div class="item">
+            <img src="image/facebook.png" alt="facebook">
+            <p>BBBBBBBBBBBBBBBB</p>
+        </div>
+        <div class="item">
+            <img src="image/line.png" alt="line">
+            <p>CCCCCC</p>
+        </div>
+    </div>
+</body>
+</html>
